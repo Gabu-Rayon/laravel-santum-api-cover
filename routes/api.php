@@ -1,5 +1,5 @@
 <?php
-
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,7 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/products',function(){
-     return 'products';
+     return Product::all();
+});
+
+Route::get('/products',function(){
+   return Product::create([
+    'name' =>'Product One',
+    'slug' =>'product-one',
+    'description' =>'This Product One Description',
+    'price' =>'999999.99'
+   ]);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
