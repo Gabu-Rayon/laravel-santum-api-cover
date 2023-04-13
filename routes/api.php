@@ -14,22 +14,31 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::get('/products', function () {
-    return Product::all();
-});
-Route::post('/products', function () {
-    return Product::create(
-[
-        'name' =>'Product Five',
-         'slug' =>'product-five',
-          'description' =>'This is Product Five',
-           'price' =>'15.99'
-    ]
-);
-});
+// Route::get('/products', function () {
+//     return Product::all();
+// });
+
+
+// Route::post('/products', function () {
+//     return Product::create(
+// [
+//         'name' =>'Product Five',
+//          'slug' =>'product-five',
+//           'description' =>'This is Product Five',
+//            'price' =>'15.99'
+//     ]
+// );
+// });
+
+Route::resource('products', ProductController::class);
+
 // Route::get('/products',[ProductController::class,'index']);
 
-// Route::get('/products',[ProductController::class,'store']);
+// Route::post('/products',[ProductController::class,'store']);
+
+// Route::get('/products/{id}', [ProductController::class, 'show']);
+
+Route::get('/products/search/{name}', [ProductController::class, 'search']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

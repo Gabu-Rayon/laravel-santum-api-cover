@@ -20,7 +20,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validation([
+        $request->validate([
             'name' =>'required',
             'slug'=>'required',
             'description' =>'required',
@@ -34,7 +34,7 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+     return Product::find($id);
     }
 
     /**
@@ -42,7 +42,10 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+       $product = Product::find($id);
+        $product->update($request->all());
+        return $product;
+
     }
 
     /**
@@ -50,6 +53,14 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+     return Product::destroy($id);
+    }
+
+        /**
+     * Search the specified resource from storage.
+     */
+    public function search(string $name)
+    {
+      return Product::where('name', 'like', '%'.$name.'%')->get();
     }
 }
