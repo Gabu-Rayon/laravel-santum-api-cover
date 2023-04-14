@@ -14,21 +14,24 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-// Route::get('/products', function () {
-//     return Product::all();
-// });
+/****
+ //Vanilla Routes without Controllers
+Route::get('/products', function () {
+    return Product::all();
+});
 
 
-// Route::post('/products', function () {
-//     return Product::create(
-// [
-//         'name' =>'Product Five',
-//          'slug' =>'product-five',
-//           'description' =>'This is Product Five',
-//            'price' =>'15.99'
-//     ]
-// );
-// });
+Route::post('/products', function () {
+    return Product::create(
+[
+        'name' =>'Product Five',
+         'slug' =>'product-five',
+          'description' =>'This is Product Five',
+           'price' =>'15.99'
+    ]
+);
+});
+*****/
 
 // Route::resource('products', ProductController::class);
 
